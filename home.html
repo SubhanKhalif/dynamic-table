@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Page</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Prevent page refresh from clearing form data */
+    window.addEventListener('beforeunload', function () {
+      const formData = new FormData(document.getElementById('mainForm'));
+      for (const [key, value] of formData.entries()) {
+        localStorage.setItem(key, value);
+      }
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('mainForm');
+      const inputs = form.querySelectorAll('input, select');
+      inputs.forEach((input) => {
+        if (localStorage.getItem(input.name)) {
+          input.value = localStorage.getItem(input.name);
+        }
+      });
+    });
+  </style>
+</head>
+<body class="bg-gray-100 flex flex-col items-center justify-center min-h-screen">
+  <!-- Logo Section -->
+  <div class="mb-8 flex flex-col items-center">
+    <div class="rounded-full bg-gray-200 p-6">
+      <img src="logo.png" alt="Logo" class="h-20 w-20">
+    </div>
+    <h1 class="text-2xl font-bold mt-4">Your Website Name</h1>
+  </div>
+
+  <!-- Container Section -->
+  <div class="bg-white shadow-md p-6 rounded-lg w-80 text-center">
+    <h2 class="text-xl font-semibold mb-4">Select a Sheet</h2>
+
+    <!-- Buttons Grid -->
+    <div class="grid grid-cols-2 gap-3">
+      <a href="index1.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        ZP
+      </a>
+      <a href="index2.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        PWD
+      </a>
+      <a href="index3.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        PARTNERSHIP
+      </a>
+      <a href="index4.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        TAN
+      </a>
+      <a href="index5.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        TDS
+      </a>
+      <a href="index6.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        PTRC
+      </a>
+      <a href="index7.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        PTE
+      </a>
+      <a href="index8.html" class="bg-blue-500 hover:bg-blue-600 text-white p-3 rounded">
+        PF
+      </a>
+    </div>
+  </div>
+</body>
+</html>

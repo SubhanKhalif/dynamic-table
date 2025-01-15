@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SP Consultancy Services</title>
+    <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 10px 0;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: center;
+            min-width: 100px;
+            position: relative;
+        }
+        th:hover, td:hover {
+            background-color: #f0f9ff;
+        }
+        th.resizable, td.resizable {
+            cursor: col-resize;
+        }
+        .resize-handle {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 5px;
+            cursor: col-resize;
+            z-index: 1;
+        }
+        .resize-handle:hover {
+            background: #ddd;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <div class="container mx-auto p-5">
+        <h1 class="text-2xl font-bold mb-4">PTRC Sheet</h1>
+        <div class="flex gap-4 mb-4">
+            <button id="add-row" class="bg-blue-500 text-white px-4 py-2 rounded shadow">Add Row</button>
+            <button id="add-col" class="bg-green-500 text-white px-4 py-2 rounded shadow">Add Column</button>
+            <button id="add-sheet" class="bg-purple-500 text-white px-4 py-2 rounded shadow">Add Sheet</button>
+            <button id="export-xlsx" class="bg-yellow-500 text-white px-4 py-2 rounded shadow">Export to Excel</button>
+        </div>
+        <div id="sheet-tabs" class="flex gap-2 mb-4"></div>
+        <div id="spreadsheet-container"></div>
+    </div>
+    <script src="spreadsheet.js"></script>
+</body>
+</html>

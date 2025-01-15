@@ -1,0 +1,27 @@
+/* Custom Styles for Spreadsheet */
+th, td {
+    border: 1px solid #ccc;
+    min-width: 80px;
+    text-align: left;
+    padding: 8px;
+  }
+  
+  th.resize {
+    position: relative;
+  }
+  
+  th.resize::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    background: transparent;
+  }
+  
+  th.resize:hover::after {
+    background: rgba(0, 0, 0, 0.1);
+  }
+  
