@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     function initializeSpreadsheet() {
-        const savedData = JSON.parse(localStorage.getItem("spreadsheetData")) || [[]];
+        const savedData = JSON.parse(localStorage.getItem("Tan")) || [[]];
         const cellLockStates = JSON.parse(localStorage.getItem("cellLockStates")) || {};
         const savedHeaders = JSON.parse(localStorage.getItem("columnHeaders")) || [];
         renderSpreadsheet(savedData, cellLockStates, savedHeaders);
@@ -127,7 +127,7 @@ document.addEventListener("DOMContentLoaded", function () {
             redoStack.push(undoStack.pop());
             const previousState = JSON.parse(undoStack[undoStack.length - 1]);
             
-            localStorage.setItem("spreadsheetData", JSON.stringify(previousState.data));
+            localStorage.setItem("Tan", JSON.stringify(previousState.data));
             localStorage.setItem("columnHeaders", JSON.stringify(previousState.headers));
             localStorage.setItem("cellLockStates", JSON.stringify(previousState.cellLockStates));
             
@@ -140,7 +140,7 @@ document.addEventListener("DOMContentLoaded", function () {
             const nextState = JSON.parse(redoStack.pop());
             undoStack.push(JSON.stringify(nextState));
             
-            localStorage.setItem("spreadsheetData", JSON.stringify(nextState.data));
+            localStorage.setItem("Tan", JSON.stringify(nextState.data));
             localStorage.setItem("columnHeaders", JSON.stringify(nextState.headers));
             localStorage.setItem("cellLockStates", JSON.stringify(nextState.cellLockStates));
             
@@ -403,7 +403,9 @@ document.addEventListener("DOMContentLoaded", function () {
         const data = Array.from(table.querySelector("tbody").rows).map((row) =>
             Array.from(row.cells).slice(1).map((cell) => cell.textContent)
         );
-        localStorage.setItem("spreadsheetData", JSON.stringify(data));
+
+        // Save data to localStorage with the key "ZP"
+        localStorage.setItem("Tan", JSON.stringify(data));
 
         const headerRow = table.querySelector("thead").rows[1];
         const headers = Array.from(headerRow.cells)
@@ -600,7 +602,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const ws = XLSX.utils.aoa_to_sheet(data);
         const wb = XLSX.utils.book_new();
         XLSX.utils.book_append_sheet(wb, ws, "Sheet1");
-        XLSX.writeFile(wb, "spreadsheet.xlsx");
+        XLSX.writeFile(wb, "pwd.xlsx");
     });
 
     initializeSpreadsheet();
